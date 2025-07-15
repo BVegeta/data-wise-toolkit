@@ -22,31 +22,38 @@ export default function MainLayout({ children }: MainLayoutProps) {
   return (
     <div className={`min-h-screen bg-background transition-colors ${isDarkMode ? 'dark' : ''}`}>
       {/* Header */}
-      <header className="border-b bg-card shadow-sm">
-        <div className="container mx-auto px-4">
+      <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+        <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <div className="h-8 w-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <Database className="h-4 w-4 text-white" />
+              <div className="h-10 w-10 bg-gradient-primary rounded-xl flex items-center justify-center shadow-md">
+                <Database className="h-5 w-5 text-white" />
               </div>
-              <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                DataClean Pro
-              </h1>
+              <div>
+                <h1 className="text-xl font-bold text-foreground">
+                  DataClean Pro
+                </h1>
+                <p className="text-xs text-muted-foreground">Data Science Platform</p>
+              </div>
             </div>
 
             {/* Navigation Tabs */}
-            <nav className="hidden md:flex items-center space-x-1">
+            <nav className="hidden md:flex items-center space-x-2 bg-muted/50 rounded-lg p-1">
               {tabs.map((tab) => (
                 <Button
                   key={tab.id}
                   variant={activeTab === tab.id ? 'default' : 'ghost'}
                   size="sm"
                   onClick={() => setActiveTab(tab.id)}
-                  className="flex items-center space-x-2"
+                  className={`flex items-center space-x-2 transition-all ${
+                    activeTab === tab.id 
+                      ? 'bg-background shadow-sm' 
+                      : 'hover:bg-background/50'
+                  }`}
                 >
                   <tab.icon className="h-4 w-4" />
-                  <span>{tab.label}</span>
+                  <span className="font-medium">{tab.label}</span>
                 </Button>
               ))}
             </nav>
@@ -57,11 +64,12 @@ export default function MainLayout({ children }: MainLayoutProps) {
                 variant="ghost"
                 size="icon"
                 onClick={toggleDarkMode}
+                className="h-9 w-9 rounded-lg"
               >
                 {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
               </Button>
               
-              <Badge variant="secondary">
+              <Badge variant="secondary" className="px-3 py-1">
                 {currentUser}
               </Badge>
               
@@ -69,6 +77,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
                 variant="ghost"
                 size="icon"
                 onClick={logout}
+                className="h-9 w-9 rounded-lg text-muted-foreground hover:text-foreground"
               >
                 <LogOut className="h-4 w-4" />
               </Button>
@@ -76,18 +85,22 @@ export default function MainLayout({ children }: MainLayoutProps) {
           </div>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden pb-3">
-            <div className="flex space-x-1 overflow-x-auto">
+          <div className="md:hidden pb-4">
+            <div className="flex space-x-2 overflow-x-auto bg-muted/30 rounded-lg p-2">
               {tabs.map((tab) => (
                 <Button
                   key={tab.id}
                   variant={activeTab === tab.id ? 'default' : 'ghost'}
                   size="sm"
                   onClick={() => setActiveTab(tab.id)}
-                  className="flex items-center space-x-2 whitespace-nowrap"
+                  className={`flex items-center space-x-2 whitespace-nowrap transition-all ${
+                    activeTab === tab.id 
+                      ? 'bg-background shadow-sm' 
+                      : 'hover:bg-background/50'
+                  }`}
                 >
                   <tab.icon className="h-4 w-4" />
-                  <span>{tab.label}</span>
+                  <span className="font-medium">{tab.label}</span>
                 </Button>
               ))}
             </div>
@@ -96,13 +109,13 @@ export default function MainLayout({ children }: MainLayoutProps) {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-6">
+      <main className="container mx-auto px-6 py-8">
         <motion.div
           key={activeTab}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="space-y-6"
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="space-y-8"
         >
           {children}
         </motion.div>

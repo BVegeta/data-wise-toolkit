@@ -62,30 +62,29 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				'data-success': 'hsl(var(--data-success))',
-				'data-warning': 'hsl(var(--data-warning))',
-				'data-info': 'hsl(var(--data-info))',
-				'data-chart': {
-					'1': 'hsl(var(--data-chart-1))',
-					'2': 'hsl(var(--data-chart-2))',
-					'3': 'hsl(var(--data-chart-3))',
-					'4': 'hsl(var(--data-chart-4))',
-					'5': 'hsl(var(--data-chart-5))'
+				success: 'hsl(var(--success))',
+				warning: 'hsl(var(--warning))',
+				info: 'hsl(var(--info))',
+				chart: {
+					'1': 'hsl(var(--chart-1))',
+					'2': 'hsl(var(--chart-2))',
+					'3': 'hsl(var(--chart-3))',
+					'4': 'hsl(var(--chart-4))',
+					'5': 'hsl(var(--chart-5))'
 				}
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-data': 'var(--gradient-data)',
 				'gradient-subtle': 'var(--gradient-subtle)'
 			},
 			boxShadow: {
-				'elegant': 'var(--shadow-elegant)',
-				'data': 'var(--shadow-data)',
-				'glow': 'var(--shadow-glow)'
+				'sm': 'var(--shadow-sm)',
+				'md': 'var(--shadow-md)',
+				'lg': 'var(--shadow-lg)'
 			},
-			transitionTimingFunction: {
-				'smooth': 'var(--transition-smooth)',
-				'bounce': 'var(--transition-bounce)'
+			transitionProperty: {
+				'all': 'var(--transition-all)',
+				'colors': 'var(--transition-colors)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
