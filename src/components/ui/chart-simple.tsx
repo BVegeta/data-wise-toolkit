@@ -1,4 +1,4 @@
-// Simplified chart component to avoid TypeScript issues
+// Simple chart components to avoid TypeScript issues with the complex chart.tsx
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
@@ -10,7 +10,7 @@ const ChartContainer = React.forwardRef<
   }
 >(({ children, className, config, ...props }, ref) => {
   return (
-    <div ref={ref} className={cn("w-full", className)} {...props}>
+    <div ref={ref} className={cn("", className)} {...props}>
       {children}
     </div>
   )
